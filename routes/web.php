@@ -7,6 +7,9 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\DoctorScheduleController;
+use App\Http\Controllers\DepartmentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +57,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
         return view('backend.dashboard');
     })->name('dashboard');
 
+    //====================================== DOCTOR MODULE ==================================
     // TO SHOW ALL THE DOCTORS IN ADMIN DASHBAORD
     Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors.all');
 
@@ -71,7 +75,10 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
 
     // TO SHOW THE PROFILE EDIT PAGE TO THE ADMIN
     Route::get('/doctor/profile/edit/{id}', [DoctorController::class, 'doctor_profile_edit'])->name('doctor.profile.edit');
+    //====================================== END DOCTOR MODULE ==================================
 
+
+    //====================================== PATIENTS MODULE ==================================
     // TO SHOW THE PROFILE EDIT PAGE TO THE ADMIN
     Route::get('/patients', [PatientController::class, 'index'])->name('patient.show');
 
@@ -83,7 +90,10 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
 
     // TO CREATE THE PATIENT IN ADMIN DASHBAORD
     Route::get('/patient/create', [PatientController::class, 'create'])->name('patient.create');
+    //====================================== END PATIENTS MODULE ==================================
 
+
+    //====================================== APPOINTMENTS MODULE ==================================
 
     // TO SHOW THE APPOINTMENTS SHOW PAGE TO THE ADMIN
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.show');
@@ -97,7 +107,37 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
     // TO CREATE THE APPOINTMENTS IN ADMIN DASHBAORD
     Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('appointment.create');
 
+    //====================================== END APPOINTMENTS MODULE ==================================
 
+
+    //====================================== DOCTOR SCHEDULE MODULE ==================================
+    // TO SHOW THE DOCTOR SCHEDULE SHOW PAGE TO THE ADMIN
+    Route::get('/schedules', [DoctorScheduleController::class, 'index'])->name('schedules.show');
+
+    // TO EDIT THE DOCTOR SCHEDULE IN ADMIN DASHBAORD
+    Route::get('/schedule/edit/{id}', [DoctorScheduleController::class, 'edit'])->name('schedule.edit');
+
+    // TO DELETE THE DOCTOR SCHEDULE IN ADMIN DASHBAORD
+    Route::get('/schedule/delete/{id}', [DoctorScheduleController::class, 'destroy'])->name('schedule.delete');
+
+    // TO CREATE THE DOCTOR SCHEDULE IN ADMIN DASHBAORD
+    Route::get('/schedule/create', [DoctorScheduleController::class, 'create'])->name('schedule.create');
+    //====================================== END DOCTOR SCHEDULE MODULE ==================================
+
+
+    //====================================== DEPARTMENT MODULE ==================================
+    // TO SHOW THE DEPARTMENT SHOW PAGE TO THE ADMIN
+    Route::get('/departments', [DepartmentController::class, 'index'])->name('departments.show');
+
+    // TO EDIT THE DEPARTMENT IN ADMIN DASHBAORD
+    Route::get('/department/edit/{id}', [DepartmentController::class, 'edit'])->name('department.edit');
+
+    // TO DELETE THE DEPARTMENT IN ADMIN DASHBAORD
+    Route::get('/department/delete/{id}', [DepartmentController::class, 'destroy'])->name('department.delete');
+
+    // TO CREATE THE DEPARTMENT IN ADMIN DASHBAORD
+    Route::get('/department/create', [DepartmentController::class, 'create'])->name('department.create');
+    //====================================== DEPARTMENT MODULE ==================================
 
     Route::get('permission/add', function(){
         $user = Auth::user();
