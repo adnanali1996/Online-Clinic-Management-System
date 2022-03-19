@@ -9,7 +9,12 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DoctorScheduleController;
 use App\Http\Controllers\DepartmentController;
-
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\StaffLeaveController;
+use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\StaffAttendenceController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ExpenseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -139,6 +144,91 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
     Route::get('/department/create', [DepartmentController::class, 'create'])->name('department.create');
     //====================================== DEPARTMENT MODULE ==================================
 
+
+
+    // =======================================EMPLOYEE MANAGEMENT MODULE ======================================
+
+
+    //====================================== EMPLOYEE MODULE ==================================
+    // TO SHOW THE EMPLOYEE SHOW PAGE TO THE ADMIN
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.show');
+
+    // TO EDIT THE EMPLOYEE IN ADMIN DASHBAORD
+    Route::get('/employee/edit/{id}', [EmployeeController::class, 'edit'])->name('employee.edit');
+
+    // TO DELETE THE EMPLOYEE IN ADMIN DASHBAORD
+    Route::get('/employee/delete/{id}', [EmployeeController::class, 'destroy'])->name('employee.delete');
+
+    // TO CREATE THE EMPLOYEE IN ADMIN DASHBAORD
+    Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
+    //====================================== EMPLOYEE MODULE ==================================
+
+    //====================================== LEAVE MODULE ==================================
+    // TO SHOW THE LEAVE SHOW PAGE TO THE ADMIN
+    Route::get('/leaves', [StaffLeaveController::class, 'index'])->name('leaves.show');
+
+    // TO EDIT THE LEAVE IN ADMIN DASHBAORD
+    Route::get('/leave/edit/{id}', [StaffLeaveController::class, 'edit'])->name('leave.edit');
+
+    // TO DELETE THE LEAVE IN ADMIN DASHBAORD
+    Route::get('/leave/delete/{id}', [StaffLeaveController::class, 'destroy'])->name('leave.delete');
+
+    // TO CREATE THE LEAVE IN ADMIN DASHBAORD
+    Route::get('/leave/create', [StaffLeaveController::class, 'create'])->name('leave.create');
+    //====================================== LEAVE MODULE ==================================
+
+    //====================================== HOLIDAYS MODULE ==================================
+    // TO SHOW THE HOLIDAYS SHOW PAGE TO THE ADMIN
+    Route::get('/holidays', [HolidayController::class, 'index'])->name('holidays.show');
+
+    // TO EDIT THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/holiday/edit/{id}', [HolidayController::class, 'edit'])->name('holiday.edit');
+
+    // TO DELETE THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/holiday/delete/{id}', [HolidayController::class, 'destroy'])->name('holiday.delete');
+
+    // TO CREATE THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/holiday/create', [HolidayController::class, 'create'])->name('holiday.create');
+    //====================================== LEAVE MODULE =====================================
+    // ======================================= END EMPLOYEE MANAGEMENT MODULE ======================================
+
+    //====================================== HOLIDAYS MODULE ==================================
+    // TO SHOW THE HOLIDAYS SHOW PAGE TO THE ADMIN
+    Route::get('/attendence', [StaffAttendenceController::class, 'index'])->name('attendence.show');
+
+
+    //====================================== LEAVE MODULE ===================================== 
+
+    // ======================================= ACCOUNT MANAGEMENT MODULE ======================================
+    //====================================== INVOICES MODULE ==================================
+    // TO SHOW THE INVOICES SHOW PAGE TO THE ADMIN
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.show');
+    // TO EDIT THE INVOICES IN ADMIN DASHBAORD
+    Route::get('/invoice/edit/{id}', [InvoiceController::class, 'edit'])->name('invoice.edit');
+    // TO DELETE THE INVOICES IN ADMIN DASHBAORD
+    Route::get('/invoice/delete/{id}', [InvoiceController::class, 'destroy'])->name('invoice.delete');
+    // TO CREATE THE INVOICES IN ADMIN DASHBAORD
+    Route::get('/invoice/create', [InvoiceController::class, 'create'])->name('invoice.create');
+    // TO VIEW THE INVOICES IN ADMIN DASHBAORD
+    Route::get('/invoice/view/{id}', [InvoiceController::class, 'show'])->name('invoice.view');
+
+    //====================================== END INVOICES MODULE =====================================
+
+
+    //====================================== EXPENSE MODULE ==================================
+    // TO SHOW THE HOLIDAYS SHOW PAGE TO THE ADMIN
+    Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.show');
+
+    // TO EDIT THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/expense/edit/{id}', [ExpenseController::class, 'edit'])->name('expense.edit');
+
+    // TO DELETE THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/expense/delete/{id}', [ExpenseController::class, 'destroy'])->name('expense.delete');
+
+    // TO CREATE THE HOLIDAYS IN ADMIN DASHBAORD
+    Route::get('/expense/create', [ExpenseController::class, 'create'])->name('expense.create');
+    //====================================== END EXPENSE MODULE =====================================
+    // ======================================= END ACCOUNT MANAGEMENT MODULE ======================================
     Route::get('permission/add', function(){
         $user = Auth::user();
         $permissions= $user->allPermissions('admin');

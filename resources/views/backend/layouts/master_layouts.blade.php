@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/backend/css/style.css') }}">
     @stack('style')
     <!--[if lt IE 9]>
@@ -36,6 +39,13 @@
     <script src="{{ asset('assets/backend/js/Chart.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/chart.js') }}"></script>
     <script src="{{ asset('assets/backend/js/app.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/select2.min.js') }}"></script>
+    <script src="{{asset('assets/backend/js/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/backend/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+
     @stack('js')
 
 </body>

@@ -110,3 +110,13 @@
                 </div>
             </div>
 @endsection
+@push('js')
+<script>
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+
+                });
+            });
+     </script>
+@endpush

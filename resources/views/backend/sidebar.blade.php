@@ -24,20 +24,17 @@
 						<li class="submenu">
 							<a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="employees.html">Employees List</a></li>
-								<li><a href="leaves.html">Leaves</a></li>
-								<li><a href="holidays.html">Holidays</a></li>
-								<li><a href="attendance.html">Attendance</a></li>
+								<li><a href="{{ route('employees.show') }}">Employees List</a></li>
+								<li><a href="{{ route('leaves.show') }}">Leaves</a></li>
+								<li><a href="{{ route('holidays.show') }}">Holidays</a></li>
+								<li><a href="{{ route('attendence.show') }}">Attendance</a></li>
 							</ul>
 						</li>
 						<li class="submenu">
 							<a href="#"><i class="fa fa-money"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
 							<ul style="display: none;">
-								<li><a href="invoices.html">Invoices</a></li>
-								<li><a href="payments.html">Payments</a></li>
-								<li><a href="expenses.html">Expenses</a></li>
-								<li><a href="taxes.html">Taxes</a></li>
-								<li><a href="provident-fund.html">Provident Fund</a></li>
+								<li><a href="{{ route('invoices.show') }}">Invoices</a></li>
+								<li><a href="{{ route('expenses.show') }}">Expenses</a></li>
 							</ul>
 						</li>
 						<li class="submenu">
