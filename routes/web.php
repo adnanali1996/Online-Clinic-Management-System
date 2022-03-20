@@ -19,6 +19,7 @@ use App\Http\Controllers\EmployeeSalaryController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -258,8 +259,25 @@ Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->
     Route::get('/asset/create', [AssetController::class, 'create'])->name('asset.create');
     // ======================================= END ASSETS MANAGEMENT MODULE ======================================
 
-     // ======================================= ACTIVITIES MANAGEMENT MODULE ======================================
-    Route::get('permission/add', function(){
+
+    // ======================================= SETTING MANAGEMENT MODULE ==========================================
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.show');
+    Route::get('/localization', [SettingController::class, 'localization'])->name('localization.show');
+    Route::get('/theme-setting', [SettingController::class, 'theme_setting'])->name('theme-setting.show');
+    Route::get('/roles-permissions', [SettingController::class, 'roles_permissions'])->name('roles-permissions.show');
+    Route::get('/invoice-settings', [SettingController::class, 'invoice_settings'])->name('invoice-settings.show');
+    Route::get('/notifications-settings', [SettingController::class, 'notifications_settings'])->name('notifications-settings.show');
+    Route::get('/change-password', [SettingController::class, 'change_password'])->name('change-password.show');
+    Route::get('/leave-type', [SettingController::class, 'leave_type'])->name('leave-type.show');
+    // TO EDIT THE LEAVE TYPE IN ADMIN DASHBAORD
+    Route::get('/leave-type/edit/{id}', [SettingController::class, 'leave_type_edit'])->name('leave-type.edit');
+    // TO DELETE THE LEAVE TYPE IN ADMIN DASHBAORD
+    Route::get('/leave-type/delete/{id}', [SettingController::class, 'leave_type_destroy'])->name('leave-type.delete');
+    // TO CREATE LEAVE TYPE IN ADMIN DASHBAORD
+    Route::get('/leave-type/create', [SettingController::class, 'leave_type_create'])->name('leave-type.create');
+
+    // ======================================= END SETTING MANAGEMENT MODULE ======================================
+     Route::get('permission/add', function(){
         $user = Auth::user();
         $permissions= $user->allPermissions('admin');
         dump($user->allPermissions());

@@ -67,7 +67,7 @@
 						</li> -->
 
                         <li>
-                            <a href="settings.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
+                            <a href="{{ route('settings.show') }}"><i class="fa fa-cog"></i> <span>Settings</span></a>
                         </li>
                     </ul>
                 </div>
